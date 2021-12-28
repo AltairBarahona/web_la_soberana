@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:web_la_soberana/ui/shared/custom_footer.dart';
 
 class ContactoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final margen = MediaQuery.of(context).size.width * 0.03;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -35,12 +35,8 @@ class ContactoView extends StatelessWidget {
                       child: FittedBox(
                           child: Row(
                         children: [
-                          AutoSizeText(
-                            "¡CONTÁCTANOS!",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
+                          AutoSizeText("¡CONTÁCTANOS!",
+                              style: GoogleFonts.satisfy(color: Colors.white)),
                         ],
                       )),
                     ),
@@ -55,7 +51,11 @@ class ContactoView extends StatelessWidget {
             width: size.width * 0.8,
             // color: Colors.red,
             child: AutoSizeText(
-              "Si deseas conocer más a cerca de La Soberana y sus productos, déjanos tu información en el siguiente formulario, además si tienes alguna pregunta o solicitud especifica no olvides escribirla para que nuestra comunicación sea mucho más efectiva. ¡Gracias por contactarte con nosotros!",
+              '''
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis aliquam quam vitae accumsan. Nulla dapibus ipsum in lectus feugiat pulvinar. Donec id felis porttitor, commodo libero et, efficitur orci. Curabitur pellentesque quam justo, tristique mattis arcu mollis at. Aliquam nec ornare mauris, sit amet venenatis neque. Etiam sit amet lorem justo. Sed non aliquet risus.
+
+
+               ''',
               style: TextStyle(fontSize: 80),
               textAlign: TextAlign.justify,
               // style: TextStyle(fontSize: ),

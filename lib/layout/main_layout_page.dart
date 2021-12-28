@@ -1,6 +1,5 @@
 import 'package:web_la_soberana/ui/shared/custom_app_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:web_la_soberana/ui/shared/custom_footer.dart';
 
 class MainLayoutPage extends StatelessWidget {
   final Widget child;

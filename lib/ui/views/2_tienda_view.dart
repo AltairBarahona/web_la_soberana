@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:web_la_soberana/ui/shared/custom_footer.dart';
 
 class TiendaView extends StatelessWidget {
@@ -11,9 +12,24 @@ class TiendaView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: size.height * 0.1),
-          SogaDivider(size: size),
-          SizedBox(height: size.height * 0.1),
+          // SizedBox(height: size.height * 0.1),
+          // SogaDivider(size: size),
+          // SizedBox(height: size.height * 0.1),
+          Container(
+            width: double.infinity,
+            height: size.height * 0.3,
+            margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+            // child: Expanded(
+            //   // height: ai
+            //   child: FittedBox(
+            //       child: AutoSizeText("Nuestra tienda",
+            //           style: GoogleFonts.satisfy(color: Colors.blue))),
+            // ),
+            child: FittedBox(
+              child: AutoSizeText("Nuestra tienda",
+                  style: GoogleFonts.satisfy(color: Colors.blue)),
+            ),
+          ),
           Row(
             children: [
               SizedBox(width: margen),

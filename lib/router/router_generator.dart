@@ -1,9 +1,6 @@
-import 'package:web_la_soberana/ui/pages/home_page_soberana.dart';
 import 'package:web_la_soberana/ui/views/1_home_view.dart';
 import 'package:web_la_soberana/ui/views/2_tienda_view.dart';
 import 'package:web_la_soberana/ui/views/3_contacto_view.dart';
-import 'package:web_la_soberana/ui/views/counter_provider_view.dart';
-import 'package:web_la_soberana/ui/views/counter_view.dart';
 import 'package:web_la_soberana/ui/views/view_404.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

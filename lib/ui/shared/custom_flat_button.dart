@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class CustomFlatuButton extends StatelessWidget {
+class CustomFlatuButton extends StatefulWidget {
   final String text;
   final Color color;
   final Function onPressed;
@@ -12,22 +14,48 @@ class CustomFlatuButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     //Este es opcional pero se inicializa con pink
-    this.color = Colors.pink,
+    this.color = Colors.red,
   }) : super(key: key);
+
+  @override
+  _CustomFlatuButtonState createState() => _CustomFlatuButtonState();
+}
+
+class _CustomFlatuButtonState extends State<CustomFlatuButton> {
+  // bool isHover = false;
+  // TextStyle estiloTexto =
+  //     new TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
+  // TextStyle estiloTextoMedio =
+  //     new TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
+
+  TextStyle estiloTexto =
+      GoogleFonts.satisfy(color: Colors.black, fontSize: 25);
+  TextStyle estiloTextoMedio = GoogleFonts.satisfy(color: Colors.black);
+
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(primary: color),
-      onPressed: () {
-        // setState(() {
-        //   _counter++;
-        // });
-        //los paréntesis finales hacen que se ejecuta realmente la función
-        this.onPressed();
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Text(this.text),
+    return MouseRegion(
+      // onEnter: (_) {
+      //   setState(() {
+      //     isHover = true;
+      //   });
+      // },
+      // onExit: (_) {
+      //   setState(() {
+      //     isHover = false;
+      //   });
+      // },
+      cursor: SystemMouseCursors.click,
+      child: TextButton(
+        style: TextButton.styleFrom(primary: widget.color),
+        onPressed: () {
+          this.widget.onPressed();
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(this.widget.text,
+              style: GoogleFonts.satisfy(color: widget.color, fontSize: 25)),
+        ),
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:web_la_soberana/ui/shared/custom_app_menu.dart';
 import 'package:web_la_soberana/ui/shared/custom_flat_button.dart';
 import 'package:flutter/material.dart';
 

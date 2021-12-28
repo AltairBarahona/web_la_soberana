@@ -1,9 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_indicators.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_options.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:web_la_soberana/ui/shared/custom_footer.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 
@@ -32,12 +31,30 @@ class HomeView extends StatelessWidget {
         children: [
           // SizedBox(height: margen / 2),
           Container(
+            width: double.infinity,
+            height: size.height * 0.3,
+            margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+            // child: Expanded(
+            //   // height: ai
+            //   child: FittedBox(
+            //       child: AutoSizeText("Nuestra tienda",
+            //           style: GoogleFonts.satisfy(color: Colors.blue))),
+            // ),
+            child: FittedBox(
+              child: AutoSizeText("La Soberana",
+                  style: GoogleFonts.satisfy(color: Colors.blue)),
+            ),
+          ),
+          Container(
             // color: Colors.white70,
             // height: size.height * 0.4,
             child: FlutterCarousel(
               options: CarouselOptions(
+                autoPlayCurve: Curves.easeInOut,
+                // autoPlayCurve: Curves.elasticInOut,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 4),
+                autoPlayAnimationDuration: Duration(seconds: 2),
+                // autoPlayInterval: Duration(seconds: 5),
                 aspectRatio: 2.0,
                 // height: size.height * 0.8,
                 showIndicator: true,
@@ -128,43 +145,6 @@ class HomeView extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Container _carruselMethoExeption() {
-    return Container(
-      child: FlutterCarousel(
-        options: CarouselOptions(
-          height: 400.0,
-          showIndicator: true,
-          slideIndicator: CircularSlideIndicator(),
-        ),
-        items: [1, 2, 3, 4, 5].map((i) {
-          return Builder(
-            builder: (BuildContext context) {
-              return Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.symmetric(horizontal: 5.0),
-                  decoration: BoxDecoration(color: Colors.amber),
-                  child: Text(
-                    'text $i',
-                    style: TextStyle(fontSize: 16.0),
-                  ));
-            },
-          );
-        }).toList(),
-      ),
-    );
-    // return Container(
-    //   child: CarouselSlider(
-    //     autoPlay: true,
-    //     // height: size.height * 0.7,
-    //     aspectRatio: 16 / 9,
-    //     // aspectRatio: size.width * 2,
-
-    //     enlargeCenterPage: true,
-    //     items: imageSliders,
-    //   ),
-    // );
   }
 }
 
