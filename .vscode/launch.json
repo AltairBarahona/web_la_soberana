@@ -12,16 +12,19 @@
         {
             "name": "web_la_soberana (profile mode)",
             "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
+            "type": "dart"
         },
         {
-            "name": "web_la_soberana_web_renderer_html",
+            "name": "web_la_soberana_web_renderer_canvaskit",
             "request": "launch",
             "type": "dart",
-            "args": ["--web-renderer","html",
-                "--no-sound-null-safety"
+            "flutterMode":"debug",
+            "args": ["--web-renderer","canvaskit",
+                "--no-sound-null-safety",
             ]
+            // "args": ["--web-renderer","html",
+            //     "--no-sound-null-safety"
+            // ]
         },
     ]
 }

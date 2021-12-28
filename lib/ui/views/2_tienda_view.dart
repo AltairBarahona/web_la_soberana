@@ -15,9 +15,11 @@ class TiendaView extends StatelessWidget {
           // SizedBox(height: size.height * 0.1),
           // SogaDivider(size: size),
           // SizedBox(height: size.height * 0.1),
+          SizedBox(height: margen / 2),
+
           Container(
             width: double.infinity,
-            height: size.height * 0.3,
+            height: size.height * 0.2,
             margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
             // child: Expanded(
             //   // height: ai
@@ -25,11 +27,43 @@ class TiendaView extends StatelessWidget {
             //       child: AutoSizeText("Nuestra tienda",
             //           style: GoogleFonts.satisfy(color: Colors.blue))),
             // ),
-            child: FittedBox(
-              child: AutoSizeText("Nuestra tienda",
-                  style: GoogleFonts.satisfy(color: Colors.blue)),
+            child: Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: size.height * 0.6,
+                  // color: Colors.transparent,
+                  child: Image.network(
+                    // "https://thumbs.dreamstime.com/b/fondo-de-los-granos-y-de-las-semillas-44691113.jpg",
+                    "https://envato-shoebox-0.imgix.net/71c8/e6f7-64b2-4710-b8aa-c0a353659108/5238.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=700&s=0fd43d4ae6e8dcdb190f65d212c6e11d",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                // Container(
+                //   width: double.infinity,
+                //   height: size.height * 0.2,
+                //   color: Colors.black.withOpacity(0.6),
+                // ),
+                Center(
+                  child: Container(
+                    width: size.width * 0.6,
+                    height: size.height * 0.2,
+                    child: FittedBox(
+                      child: AutoSizeText(
+                        "Nuestra tienda",
+                        style: GoogleFonts.satisfy(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
+          SizedBox(height: margen),
+
           Row(
             children: [
               SizedBox(width: margen),

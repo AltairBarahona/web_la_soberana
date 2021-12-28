@@ -24,7 +24,7 @@ class _TabletDesktopMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 01),
       color: Colors.yellow,
       width: double.infinity,
       child: Row(
@@ -77,6 +77,7 @@ class __MobileMenuState extends State<_MobileMenu>
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         width: double.infinity,
@@ -113,10 +114,8 @@ class __MenuTitleState extends State<_MenuTitle> {
       onTap: () {
         if (isOpen2) {
           widget.controller.reverse();
-          print("2");
         } else {
           widget.controller.forward();
-          print("1");
         }
         setState(() {
           isOpen2 = !isOpen2;
@@ -126,13 +125,13 @@ class __MenuTitleState extends State<_MenuTitle> {
         children: [
           Container(
             // width: size.width*0.2,
-            height: size.height * 0.07,
+            // height: size.height * 0.05,
             color: Colors.transparent,
             child: Row(
               children: [
                 Spacer(),
                 AnimatedContainer(
-                  duration: Duration(milliseconds: 200),
+                  duration: Duration(milliseconds: 400),
                   curve: Curves.easeOut,
                   color: Colors.pink,
                   width: widget.isOpen ? 42 : 0,
@@ -154,25 +153,78 @@ class __MenuTitleState extends State<_MenuTitle> {
               ],
             ),
           ),
-          if (isOpen2) ...[
+          if (isOpen2 && size.width > 600) ...[
             CustomFlatuButton(
               text: "La Soberana",
               color: Colors.red,
-              onPressed: () => locator<NavigationService>().navigateTo("/home"),
+              onPressed: () {
+                return locator<NavigationService>().navigateTo("/home");
+              },
             ),
             Divider(color: Colors.black, thickness: 0.1),
             CustomFlatuButton(
               text: "Nuestra tienda",
               color: Colors.black,
-              onPressed: () =>
-                  locator<NavigationService>().navigateTo("/tienda"),
+              onPressed: () {
+                return locator<NavigationService>().navigateTo("/tienda");
+              },
             ),
             Divider(color: Colors.black, thickness: 0.1),
             CustomFlatuButton(
               text: "Contacto",
               color: Colors.black,
-              onPressed: () =>
-                  locator<NavigationService>().navigateTo("/contacto"),
+              onPressed: () {
+                return locator<NavigationService>().navigateTo("/contacto");
+              },
+            ),
+          ],
+          if (isOpen2 && size.width <= 600) ...[
+            CustomFlatuButton(
+              text: "La Soberana",
+              color: Colors.red,
+              onPressed: () {
+                if (isOpen2) {
+                  widget.controller.reverse();
+                } else {
+                  widget.controller.forward();
+                }
+                setState(() {
+                  isOpen2 = !isOpen2;
+                });
+                return locator<NavigationService>().navigateTo("/home");
+              },
+            ),
+            Divider(color: Colors.black, thickness: 0.1),
+            CustomFlatuButton(
+              text: "Nuestra tienda",
+              color: Colors.black,
+              onPressed: () {
+                if (isOpen2) {
+                  widget.controller.reverse();
+                } else {
+                  widget.controller.forward();
+                }
+                setState(() {
+                  isOpen2 = !isOpen2;
+                });
+                return locator<NavigationService>().navigateTo("/tienda");
+              },
+            ),
+            Divider(color: Colors.black, thickness: 0.1),
+            CustomFlatuButton(
+              text: "Contacto",
+              color: Colors.black,
+              onPressed: () {
+                if (isOpen2) {
+                  widget.controller.reverse();
+                } else {
+                  widget.controller.forward();
+                }
+                setState(() {
+                  isOpen2 = !isOpen2;
+                });
+                return locator<NavigationService>().navigateTo("/contacto");
+              },
             ),
           ]
         ],

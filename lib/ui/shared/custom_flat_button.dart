@@ -34,6 +34,7 @@ class _CustomFlatuButtonState extends State<CustomFlatuButton> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return MouseRegion(
       // onEnter: (_) {
       //   setState(() {
@@ -51,11 +52,18 @@ class _CustomFlatuButtonState extends State<CustomFlatuButton> {
         onPressed: () {
           this.widget.onPressed();
         },
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(this.widget.text,
-              style: GoogleFonts.satisfy(color: widget.color, fontSize: 25)),
-        ),
+        child: size.width > 600
+            ? Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(this.widget.text,
+                    style:
+                        GoogleFonts.satisfy(color: widget.color, fontSize: 30)),
+              )
+            : Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: Text(this.widget.text,
+                    style: GoogleFonts.satisfy(
+                        color: widget.color, fontSize: 25))),
       ),
     );
   }

@@ -1,11 +1,11 @@
 {
-    "name": "web_la_soberana",
-    "short_name": "web_la_soberana",
+    "name": "La Soberana Altair B",
+    "short_name": "La Soberana Altair B",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Web de La Soberana",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

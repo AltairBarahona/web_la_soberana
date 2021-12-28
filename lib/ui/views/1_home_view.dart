@@ -29,10 +29,11 @@ class HomeView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // SizedBox(height: margen / 2),
+          SizedBox(height: margen / 2),
           Container(
             width: double.infinity,
-            height: size.height * 0.3,
+            height: size.height * 0.2,
+            // color: Colors.blue,
             margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
             // child: Expanded(
             //   // height: ai
@@ -40,13 +41,44 @@ class HomeView extends StatelessWidget {
             //       child: AutoSizeText("Nuestra tienda",
             //           style: GoogleFonts.satisfy(color: Colors.blue))),
             // ),
-            child: FittedBox(
-              child: AutoSizeText("La Soberana",
-                  style: GoogleFonts.satisfy(color: Colors.blue)),
+            child: Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: size.height * 0.6,
+                  // color: Colors.transparent,
+                  child: Image.network(
+                    // "https://thumbs.dreamstime.com/b/fondo-de-los-granos-y-de-las-semillas-44691113.jpg",
+                    "https://envato-shoebox-0.imgix.net/71c8/e6f7-64b2-4710-b8aa-c0a353659108/5238.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=700&s=0fd43d4ae6e8dcdb190f65d212c6e11d",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                // Container(
+                //   width: double.infinity,
+                //   height: size.height * 0.2,
+                //   color: Colors.black.withOpacity(0.6),
+                // ),
+                Center(
+                  child: Container(
+                    width: size.width * 0.6,
+                    height: size.height * 0.2,
+                    child: FittedBox(
+                      child: AutoSizeText(
+                        "La Soberana",
+                        style: GoogleFonts.satisfy(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
+
           Container(
-            // color: Colors.white70,
+            // color: Colors.red,
             // height: size.height * 0.4,
             child: FlutterCarousel(
               options: CarouselOptions(
@@ -55,8 +87,9 @@ class HomeView extends StatelessWidget {
                 autoPlay: true,
                 autoPlayAnimationDuration: Duration(seconds: 2),
                 // autoPlayInterval: Duration(seconds: 5),
-                aspectRatio: 2.0,
-                // height: size.height * 0.8,
+                // aspectRatio: 2.0,
+                height:
+                    size.width > 600 ? size.height * 0.7 : size.height * 0.4,
                 showIndicator: true,
                 slideIndicator: CircularSlideIndicator(),
               ),
@@ -94,27 +127,57 @@ class HomeView extends StatelessWidget {
           //   },
           // ),
           SizedBox(height: margen / 2),
-          Row(
-            children: [
-              SizedBox(width: margen),
-              _ElemenoF1Doble(margen: margen, size: size),
-              SizedBox(width: margen),
-              _ElemenoF1Doble(margen: margen, size: size),
-              SizedBox(width: margen),
-            ],
-          ),
-          SizedBox(width: double.infinity, height: margen),
-          Row(
-            children: [
-              SizedBox(width: margen),
-              _ElementoF2Triple(margen: margen, size: size),
-              SizedBox(width: margen),
-              _ElementoF2Triple(margen: margen, size: size),
-              SizedBox(width: margen),
-              _ElementoF2Triple(margen: margen, size: size),
-              SizedBox(width: margen),
-            ],
-          ),
+          size.width > 600
+              ? Column(
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(width: margen),
+                        _ElemenoF1Doble(margen: margen, size: size),
+                        SizedBox(width: margen),
+                        _ElemenoF1Doble(margen: margen, size: size),
+                        SizedBox(width: margen),
+                      ],
+                    ),
+                    SizedBox(width: double.infinity, height: margen),
+                    Row(
+                      children: [
+                        SizedBox(width: margen),
+                        _ElementoF2Triple(margen: margen, size: size),
+                        SizedBox(width: margen),
+                        _ElementoF2Triple(margen: margen, size: size),
+                        SizedBox(width: margen),
+                        _ElementoF2Triple(margen: margen, size: size),
+                        SizedBox(width: margen),
+                      ],
+                    ),
+                  ],
+                )
+              : Column(
+                  children: [
+                    ElementoSoloParaMobile(
+                      margen: margen,
+                      path:
+                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
+                    ),
+                    ElementoSoloParaMobile(
+                      margen: margen,
+                      path:
+                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
+                    ),
+                    ElementoSoloParaMobile(
+                      margen: margen,
+                      path:
+                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
+                    ),
+                    ElementoSoloParaMobile(
+                      margen: margen,
+                      path:
+                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
+                    ),
+                  ],
+                ),
+
           SizedBox(width: double.infinity, height: margen),
           Container(
             width: double.infinity,
@@ -129,21 +192,62 @@ class HomeView extends StatelessWidget {
             ),
           ),
           SizedBox(width: double.infinity, height: margen),
-          Row(
-            children: [
-              SizedBox(width: margen),
-              _ElementoF3Triple(margen: margen, size: size),
-              SizedBox(width: margen),
-              _ElementoF3Triple(margen: margen, size: size),
-              SizedBox(width: margen),
-              _ElementoF3Triple(margen: margen, size: size),
-              SizedBox(width: margen),
-            ],
-          ),
+          size.width > 600
+              ? Row(
+                  children: [
+                    SizedBox(width: margen),
+                    _ElementoF3Triple(margen: margen, size: size),
+                    SizedBox(width: margen),
+                    _ElementoF3Triple(margen: margen, size: size),
+                    SizedBox(width: margen),
+                    _ElementoF3Triple(margen: margen, size: size),
+                    SizedBox(width: margen),
+                  ],
+                )
+              : Column(
+                  children: [
+                    ElementoSoloParaMobile(
+                      margen: margen,
+                      path:
+                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
+                    ),
+                    ElementoSoloParaMobile(
+                      margen: margen,
+                      path:
+                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
+                    ),
+                    ElementoSoloParaMobile(
+                      margen: margen,
+                      path:
+                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
+                    ),
+                  ],
+                ),
           SizedBox(width: double.infinity, height: margen),
           Footer(),
         ],
       ),
+    );
+  }
+}
+
+class ElementoSoloParaMobile extends StatelessWidget {
+  const ElementoSoloParaMobile({
+    Key? key,
+    required this.margen,
+    required this.path,
+  }) : super(key: key);
+
+  final double margen;
+  final String path;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(margen, margen, margen, margen),
+      // height: size.height * 0.26,
+      // color: Colors.red,
+      child: Image(image: NetworkImage(path)),
     );
   }
 }

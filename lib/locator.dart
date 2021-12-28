@@ -1,3 +1,4 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:get_it/get_it.dart';
 import 'package:web_la_soberana/services/navigator_service.dart';
 
