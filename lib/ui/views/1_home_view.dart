@@ -1,28 +1,81 @@
 import 'package:auto_size_text/auto_size_text.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_indicators.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_options.dart';
 import 'package:web_la_soberana/ui/shared/custom_footer.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     final margen = MediaQuery.of(context).size.width * 0.03;
+    Size size = MediaQuery.of(context).size;
+
+    final List<Widget> imageSliders = imgList
+        .map((item) => Container(
+              // color: Colors.red,
+              margin: EdgeInsets.all(margen),
+              child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                  child: Image.network(
+                    item,
+                    width: size.width * 0.8,
+                    fit: BoxFit.cover,
+                  )),
+            ))
+        .toList();
+
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: margen / 2),
+          // SizedBox(height: margen / 2),
           Container(
-            child: CarouselSlider(
-              autoPlay: true,
-              // height: size.height * 0.7,
-              aspectRatio: 16 / 9,
-              // aspectRatio: size.width * 2,
-
-              enlargeCenterPage: true,
+            // color: Colors.white70,
+            // height: size.height * 0.4,
+            child: FlutterCarousel(
+              options: CarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 4),
+                aspectRatio: 2.0,
+                // height: size.height * 0.8,
+                showIndicator: true,
+                slideIndicator: CircularSlideIndicator(),
+              ),
               items: imageSliders,
             ),
           ),
+          // FlutterCarousel.builder(
+          //   options: CarouselOptions(
+          //     aspectRatio: 2.0,
+          //     enlargeCenterPage: false,
+          //     viewportFraction: 1,
+          //     showIndicator: true,
+          //     autoPlay: true,
+          //     slideIndicator: CircularStaticIndicator(),
+          //   ),
+          //   itemCount: (imgList.length / 2).round(),
+          //   itemBuilder: (context, index, realIdx) {
+          //     final int first = index * 2;
+          //     final int second = first + 1;
+          //     return Row(
+          //       children: [first, second].map((idx) {
+          //         return Expanded(
+          //           flex: 1,
+          //           child: Container(
+          //             margin: const EdgeInsets.symmetric(horizontal: 10),
+          //             child: Image.network(
+          //               imgList[idx],
+          //               fit: BoxFit.cover,
+          //               width: double.infinity,
+          //             ),
+          //           ),
+          //         );
+          //       }).toList(),
+          //     );
+          //   },
+          // ),
           SizedBox(height: margen / 2),
           Row(
             children: [
@@ -76,10 +129,46 @@ class HomeView extends StatelessWidget {
       ),
     );
   }
+
+  Container _carruselMethoExeption() {
+    return Container(
+      child: FlutterCarousel(
+        options: CarouselOptions(
+          height: 400.0,
+          showIndicator: true,
+          slideIndicator: CircularSlideIndicator(),
+        ),
+        items: [1, 2, 3, 4, 5].map((i) {
+          return Builder(
+            builder: (BuildContext context) {
+              return Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: BoxDecoration(color: Colors.amber),
+                  child: Text(
+                    'text $i',
+                    style: TextStyle(fontSize: 16.0),
+                  ));
+            },
+          );
+        }).toList(),
+      ),
+    );
+    // return Container(
+    //   child: CarouselSlider(
+    //     autoPlay: true,
+    //     // height: size.height * 0.7,
+    //     aspectRatio: 16 / 9,
+    //     // aspectRatio: size.width * 2,
+
+    //     enlargeCenterPage: true,
+    //     items: imageSliders,
+    //   ),
+    // );
+  }
 }
 
 final List<String> imgList = [
-  'https://www.soberana.com.co/wp-content/uploads/2021/11/banner-jen-soberana.jpg',
   'https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome3.jpg',
   'https://www.soberana.com.co/wp-content/uploads/2020/12/destacado-4.jpg',
   'https://www.soberana.com.co/wp-content/uploads/2020/12/destacado-3.jpg',
