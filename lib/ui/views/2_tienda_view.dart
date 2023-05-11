@@ -35,7 +35,7 @@ class TiendaView extends StatelessWidget {
                   // color: Colors.transparent,
                   child: Image.network(
                     // "https://thumbs.dreamstime.com/b/fondo-de-los-granos-y-de-las-semillas-44691113.jpg",
-                    "https://envato-shoebox-0.imgix.net/71c8/e6f7-64b2-4710-b8aa-c0a353659108/5238.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=700&s=0fd43d4ae6e8dcdb190f65d212c6e11d",
+                    "assets/img/arverjaRosada.jpeg",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -76,7 +76,7 @@ class TiendaView extends StatelessWidget {
             ],
           ),
           SizedBox(height: size.height * 0.02),
-          SogaDivider(size: size),
+          // SogaDivider(size: size),
           SizedBox(height: size.height * 0.1),
           Row(
             children: [
@@ -90,7 +90,7 @@ class TiendaView extends StatelessWidget {
             ],
           ),
           SizedBox(height: size.height * 0.02),
-          SogaDivider(size: size),
+          // SogaDivider(size: size),
           SizedBox(height: size.height * 0.1),
           Row(
             children: [
@@ -104,7 +104,7 @@ class TiendaView extends StatelessWidget {
             ],
           ),
           SizedBox(height: size.height * 0.02),
-          SogaDivider(size: size),
+          // SogaDivider(size: size),
           SizedBox(height: size.height * 0.1),
           Row(
             children: [
@@ -125,44 +125,44 @@ class TiendaView extends StatelessWidget {
   }
 }
 
-class SogaDivider extends StatelessWidget {
-  const SogaDivider({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
+// class SogaDivider extends StatelessWidget {
+//   const SogaDivider({
+//     Key? key,
+//     required this.size,
+//   }) : super(key: key);
 
-  final Size size;
+//   final Size size;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.red,
-      // width: double.infinity,
-      height: size.height * 0.02,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          Image(
-            image: NetworkImage(
-                "https://www.soberana.com.co/wp-content/themes/lasoberana/images/cuerda.png"),
-          ),
-          Image(
-            image: NetworkImage(
-                "https://www.soberana.com.co/wp-content/themes/lasoberana/images/cuerda.png"),
-          ),
-          Image(
-            image: NetworkImage(
-                "https://www.soberana.com.co/wp-content/themes/lasoberana/images/cuerda.png"),
-          ),
-          Image(
-            image: NetworkImage(
-                "https://www.soberana.com.co/wp-content/themes/lasoberana/images/cuerda.png"),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       // color: Colors.red,
+//       // width: double.infinity,
+//       height: size.height * 0.02,
+//       child: ListView(
+//         scrollDirection: Axis.horizontal,
+//         children: [
+//           Image(
+//             image: NetworkImage(
+//                 "https://www.soberana.com.co/wp-content/themes/lasoberana/images/cuerda.png"),
+//           ),
+//           Image(
+//             image: NetworkImage(
+//                 "https://www.soberana.com.co/wp-content/themes/lasoberana/images/cuerda.png"),
+//           ),
+//           Image(
+//             image: NetworkImage(
+//                 "https://www.soberana.com.co/wp-content/themes/lasoberana/images/cuerda.png"),
+//           ),
+//           Image(
+//             image: NetworkImage(
+//                 "https://www.soberana.com.co/wp-content/themes/lasoberana/images/cuerda.png"),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class _ElementoF3Triple extends StatelessWidget {
   const _ElementoF3Triple({
@@ -173,10 +173,9 @@ class _ElementoF3Triple extends StatelessWidget {
 
   final double margen;
   final Size size;
-  final String pathImage =
-      "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg";
+  final String pathImage = "assets/img/arverjaRosada.jpeg";
   final String descripcionProducto =
-      "Oferta pague 3 lleve 4 en especialidades atún la soberana";
+      "Oferta pague 3 lleve 4 en especialidades atún Soberana";
   final String precioProducto = "\$15";
 
   @override

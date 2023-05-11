@@ -5,11 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 final List<String> imgList = [
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
+  "assets/img/arverjaRosada.jpeg",
+  "assets/img/arverjaVerde.jpeg",
+  "assets/img/avena.jpeg",
+  "assets/img/azucar.jpeg",
+  "assets/img/canguil.jpeg",
+  "assets/img/frejolCanario.jpeg",
+  "assets/img/frejolNegro.jpeg",
+  "assets/img/frejolRojo.jpeg",
+  "assets/img/garbanzo.jpeg",
+  "assets/img/lenteja.jpeg",
+  "assets/img/maicena.jpeg",
+  "assets/img/panelaMolida.jpeg",
+  "assets/img/panelaRedonda.jpeg",
 ];
 
 final List<Widget> imageSliders = imgList
@@ -20,7 +28,7 @@ final List<Widget> imageSliders = imgList
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 child: Stack(
                   children: <Widget>[
-                    Image.network(item, fit: BoxFit.cover, width: 1000.0),
+                    Image.asset(item, fit: BoxFit.cover, width: 1000.0),
                     Positioned(
                       bottom: 0.0,
                       left: 0.0,
@@ -66,18 +74,19 @@ class HomePageSoberana extends StatelessWidget {
         children: [
           Container(
             child: CarouselSlider(
-              autoPlay: true,
-              aspectRatio: 2.5,
-              enlargeCenterPage: true,
-              items: imageSliders,
-            ),
+                items: imageSliders,
+                options: CarouselOptions(
+                  autoPlay: true,
+                  aspectRatio: 2.5,
+                  enlargeCenterPage: true,
+                )),
           ),
           Container(
             // width: double.infinity,
             // height: size.height * 0.7,
             // color: Colors.blueAccent,
             child: Image(
-                image: NetworkImage(
+                image: AssetImage(
                     "https://www.soberana.com.co/wp-content/uploads/2021/01/BannerAtunes.jpg")),
           ),
           SizedBox(height: margen),
@@ -189,7 +198,7 @@ class _ElementoF3Triple extends StatelessWidget {
   final String pathImage =
       "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg";
   final String descripcionProducto =
-      "Oferta pague 3 lleve 4 en especialidades atún la soberana";
+      "Oferta pague 3 lleve 4 en especialidades atún Soberana";
   final String precioProducto = "\$15";
 
   @override

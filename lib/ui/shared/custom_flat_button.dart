@@ -30,7 +30,7 @@ class _CustomFlatuButtonState extends State<CustomFlatuButton> {
 
   TextStyle estiloTexto =
       GoogleFonts.satisfy(color: Colors.black, fontSize: 25);
-  TextStyle estiloTextoMedio = GoogleFonts.satisfy(color: Colors.black);
+  TextStyle estiloTextoMedio = GoogleFonts.courgette(color: Colors.black);
 
   @override
   Widget build(BuildContext context) {

@@ -1,362 +1,194 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_carousel_widget/flutter_carousel_indicators.dart';
-import 'package:flutter_carousel_widget/flutter_carousel_options.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:web_la_soberana/ui/shared/custom_footer.dart';
-import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final margen = MediaQuery.of(context).size.width * 0.03;
     Size size = MediaQuery.of(context).size;
 
-    final List<Widget> imageSliders = imgList
-        .map((item) => Container(
-              // color: Colors.red,
-              margin: EdgeInsets.all(margen),
-              child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-                  child: Image.network(
-                    item,
-                    width: size.width * 0.8,
-                    fit: BoxFit.cover,
-                  )),
-            ))
-        .toList();
-
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(height: margen / 2),
-          Container(
-            width: double.infinity,
-            height: size.height * 0.2,
-            // color: Colors.blue,
-            margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-            // child: Expanded(
-            //   // height: ai
-            //   child: FittedBox(
-            //       child: AutoSizeText("Nuestra tienda",
-            //           style: GoogleFonts.satisfy(color: Colors.blue))),
-            // ),
-            child: Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: size.height * 0.6,
-                  // color: Colors.transparent,
-                  child: Image.network(
-                    // "https://thumbs.dreamstime.com/b/fondo-de-los-granos-y-de-las-semillas-44691113.jpg",
-                    "https://envato-shoebox-0.imgix.net/71c8/e6f7-64b2-4710-b8aa-c0a353659108/5238.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=700&s=0fd43d4ae6e8dcdb190f65d212c6e11d",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                // Container(
-                //   width: double.infinity,
-                //   height: size.height * 0.2,
-                //   color: Colors.black.withOpacity(0.6),
-                // ),
-                Center(
-                  child: Container(
-                    width: size.width * 0.6,
-                    height: size.height * 0.2,
-                    child: FittedBox(
-                      child: AutoSizeText(
-                        "La Soberana",
-                        style: GoogleFonts.satisfy(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          Container(
-            // color: Colors.red,
-            // height: size.height * 0.4,
-            child: FlutterCarousel(
-              options: CarouselOptions(
-                autoPlayCurve: Curves.easeInOut,
-                // autoPlayCurve: Curves.elasticInOut,
-                autoPlay: true,
-                autoPlayAnimationDuration: Duration(seconds: 2),
-                // autoPlayInterval: Duration(seconds: 5),
-                // aspectRatio: 2.0,
-                height:
-                    size.width > 600 ? size.height * 0.7 : size.height * 0.4,
-                showIndicator: true,
-                slideIndicator: CircularSlideIndicator(),
-              ),
-              items: imageSliders,
-            ),
-          ),
-          // FlutterCarousel.builder(
-          //   options: CarouselOptions(
-          //     aspectRatio: 2.0,
-          //     enlargeCenterPage: false,
-          //     viewportFraction: 1,
-          //     showIndicator: true,
-          //     autoPlay: true,
-          //     slideIndicator: CircularStaticIndicator(),
-          //   ),
-          //   itemCount: (imgList.length / 2).round(),
-          //   itemBuilder: (context, index, realIdx) {
-          //     final int first = index * 2;
-          //     final int second = first + 1;
-          //     return Row(
-          //       children: [first, second].map((idx) {
-          //         return Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             margin: const EdgeInsets.symmetric(horizontal: 10),
-          //             child: Image.network(
-          //               imgList[idx],
-          //               fit: BoxFit.cover,
-          //               width: double.infinity,
-          //             ),
-          //           ),
-          //         );
-          //       }).toList(),
-          //     );
-          //   },
-          // ),
-          SizedBox(height: margen / 2),
-          size.width > 600
-              ? Column(
-                  children: [
-                    Row(
-                      children: [
-                        SizedBox(width: margen),
-                        _ElemenoF1Doble(margen: margen, size: size),
-                        SizedBox(width: margen),
-                        _ElemenoF1Doble(margen: margen, size: size),
-                        SizedBox(width: margen),
-                      ],
-                    ),
-                    SizedBox(width: double.infinity, height: margen),
-                    Row(
-                      children: [
-                        SizedBox(width: margen),
-                        _ElementoF2Triple(margen: margen, size: size),
-                        SizedBox(width: margen),
-                        _ElementoF2Triple(margen: margen, size: size),
-                        SizedBox(width: margen),
-                        _ElementoF2Triple(margen: margen, size: size),
-                        SizedBox(width: margen),
-                      ],
-                    ),
-                  ],
-                )
-              : Column(
-                  children: [
-                    ElementoSoloParaMobile(
-                      margen: margen,
-                      path:
-                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
-                    ),
-                    ElementoSoloParaMobile(
-                      margen: margen,
-                      path:
-                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
-                    ),
-                    ElementoSoloParaMobile(
-                      margen: margen,
-                      path:
-                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
-                    ),
-                    ElementoSoloParaMobile(
-                      margen: margen,
-                      path:
-                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
-                    ),
-                  ],
-                ),
-
-          SizedBox(width: double.infinity, height: margen),
-          Container(
-            width: double.infinity,
-            color: Colors.red,
-            height: size.height * 0.4,
-            // color: Colors.blueAccent,
-            child: Image(
-              image: NetworkImage(
-                "https://www.soberana.com.co/wp-content/uploads/2021/01/BannerAtunes.jpg",
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
-          SizedBox(width: double.infinity, height: margen),
-          size.width > 600
-              ? Row(
-                  children: [
-                    SizedBox(width: margen),
-                    _ElementoF3Triple(margen: margen, size: size),
-                    SizedBox(width: margen),
-                    _ElementoF3Triple(margen: margen, size: size),
-                    SizedBox(width: margen),
-                    _ElementoF3Triple(margen: margen, size: size),
-                    SizedBox(width: margen),
-                  ],
-                )
-              : Column(
-                  children: [
-                    ElementoSoloParaMobile(
-                      margen: margen,
-                      path:
-                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
-                    ),
-                    ElementoSoloParaMobile(
-                      margen: margen,
-                      path:
-                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
-                    ),
-                    ElementoSoloParaMobile(
-                      margen: margen,
-                      path:
-                          "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg",
-                    ),
-                  ],
-                ),
-          SizedBox(width: double.infinity, height: margen),
-          Footer(),
-        ],
-      ),
-    );
-  }
-}
-
-class ElementoSoloParaMobile extends StatelessWidget {
-  const ElementoSoloParaMobile({
-    Key? key,
-    required this.margen,
-    required this.path,
-  }) : super(key: key);
-
-  final double margen;
-  final String path;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(margen, margen, margen, margen),
-      // height: size.height * 0.26,
-      // color: Colors.red,
-      child: Image(image: NetworkImage(path)),
+    return Padding(
+      padding: EdgeInsets.all(16),
+      child: ProductGrid(),
     );
   }
 }
 
 final List<String> imgList = [
-  'https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome3.jpg',
-  'https://www.soberana.com.co/wp-content/uploads/2020/12/destacado-4.jpg',
-  'https://www.soberana.com.co/wp-content/uploads/2020/12/destacado-3.jpg',
-  'https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome2.jpg',
+  "assets/img/panelaRedonda.jpeg",
+  "assets/img/arverjaRosada.jpeg",
+  "assets/img/arverjaVerde.jpeg",
+  "assets/img/avena.jpeg",
+  "assets/img/azucar.jpeg",
+  "assets/img/canguil.jpeg",
+  "assets/img/frejolCanario.jpeg",
+  "assets/img/frejolNegro.jpeg",
+  "assets/img/frejolRojo.jpeg",
+  "assets/img/garbanzo.jpeg",
+  "assets/img/lenteja.jpeg",
+  "assets/img/maicena.jpeg",
+  "assets/img/panelaMolida.jpeg",
 ];
 
-class _ElementoF2Triple extends StatelessWidget {
-  const _ElementoF2Triple({
-    Key? key,
-    required this.margen,
-    required this.size,
-  }) : super(key: key);
+class Product {
+  final String name;
+  final String imagePath;
+  final String description;
 
-  final double margen;
-  final Size size;
-  final String pathImage =
-      "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg";
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        // margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        // height: size.height * 0.26,
-        // color: Colors.red,
-        child: Image(image: NetworkImage(pathImage)),
-      ),
-    );
-  }
+  Product(
+      {required this.name, required this.imagePath, required this.description});
 }
 
-class _ElemenoF1Doble extends StatelessWidget {
-  const _ElemenoF1Doble({
-    Key? key,
-    required this.margen,
-    required this.size,
-  }) : super(key: key);
+List<Product> productList = [
+  Product(
+      description:
+          "Descubre el sabor suave y dulce de nuestras arvejas rosadas. Cosechadas con amor, llenarán tus platos de color y sabor. ¡Cocina momentos inolvidables y reconfortantes en casa con estas pequeñas joyas de la naturaleza!",
+      name: 'Arverja Rosada',
+      imagePath: 'assets/products/ARVERJA ROSADA.jpg'),
+  Product(
+      description:
+          "¡Dale vida a tus platos con nuestras arvejas verdes! Recuerda los días de comidas familiares con su sabor fresco y vibrante. ¡Añade un toque de amor a tus preparaciones y disfruta de la esencia del hogar en cada bocado!",
+      name: 'Arverja Verde',
+      imagePath: 'assets/products/ARVERJA VERDE.jpg'),
+  Product(
+      description:
+          "Comienza tus mañanas con el abrazo cálido de nuestra avena. Rica en nutrientes y con su sabor suave y reconfortante, te transportará a esos desayunos familiares llenos de amor y risas. ¡Prepárala con cariño y siente cómo llena tu día de energía y buenos recuerdos!",
+      name: 'Avena',
+      imagePath: 'assets/products/avena.jpeg'),
+  Product(
+      description:
+          "Endulza tus días con nuestro azúcar de la más alta calidad. Agrega ese toque cálido y hogareño a tus bebidas y postres. ¡Cada grano es un grano de felicidad, listo para derretirse en tu taza de café o en tu receta favorita!",
+      name: 'Azúcar',
+      imagePath: 'assets/products/azucar1.jpg'),
+  Product(
+      description:
+          "Nada como reuniones familiares con el aroma de nuestras palomitas de maíz recién hechas. Su crujiente textura y su sabor irresistible te llevarán de vuelta a las noches de películas en casa. ¡Prepáralas en minutos y disfruta de un momento de diversión y sabor!",
+      name: 'Canguil',
+      imagePath: 'assets/products/canguil.jpeg'),
+  Product(
+      description:
+          "Nuestros fréjoles canarios son como un abrazo en un día frío. Con su textura cremosa y su sabor lleno de cariño, son el complemento perfecto para tus platos caseros. ¡Rememora las comidas en familia con cada cucharada!",
+      name: 'Fréjol Canario',
+      imagePath: 'assets/products/frejol Canario.jpg'),
+  Product(
+      description:
+          "Nuestros fréjoles negros son el corazón de las comidas caseras. Con su sabor profundo y su textura suave, son el ingrediente estrella de tus recetas favoritas. ¡Cocínalos con amor y siente cómo cada bocado te transporta al calor del hogar!",
+      name: 'Fréjol Negro',
+      imagePath: 'assets/products/frejolNegro.jpeg'),
+  Product(
+      description:
+          "Siente la nostalgia de las comidas caseras con nuestros fréjoles rojos. Su sabor profundo y su textura suave evocan recuerdos de comidas cocinadas lentamente en la cocina de la abuela. ¡Añádelos a tus recetas y siente el calor del hogar en cada bocado!",
+      name: 'Fréjol Rojo',
+      imagePath: 'assets/products/frejol rojo.jpg'),
+  Product(
+      description:
+          "Disfruta la textura rica y el sabor nutritivo de nuestros garbanzos. Perfectos para guisos reconfortantes o hummus casero. ¡Cocina con amor y siente cómo tus platos se transforman en verdaderas delicias caseras!",
+      name: 'Garbanzo',
+      imagePath: 'assets/products/garbanzo.jpg'),
+  Product(
+      description:
+          "Nuestras lentejas son un abrazo comestible en un plato. De sabor terroso y textura suave, son el ingrediente perfecto para tus guisos y sopas. ¡Deleita tu paladar y revive las tradiciones culinarias del hogar!",
+      name: 'Lenteja',
+      imagePath: 'assets/products/lenteja1.jpg'),
+  Product(
+      description:
+          "Nuestra maicena es la magia blanca que transforma tus recetas. Ya sea para espesar tus salsas o para preparar deliciosos postres, siempre aporta ese toque hogareño. ¡Experimenta la sensación de la cocina casera en cada plato!",
+      name: 'Maicena',
+      imagePath: 'assets/products/maicena.jpg'),
+  Product(
+      description:
+          "Descubre el dulzor genuino y cálido de nuestra panela molida. Con su sabor profundo y terroso, transformará tus bebidas y postres en auténticas joyas culinarias hogareñas. ¡Añade un toque de nostalgia a tus preparaciones y disfruta del sabor de los buenos momentos en familia!",
+      name: 'Panela Molida',
+      imagePath: 'assets/products/panelamolida.jpg'),
+  Product(
+      description:
+          "Nuestra panela redonda es el dulce recordatorio de la cocina casera. Su sabor profundo y meloso transformará tus bebidas y postres en delicias hogareñas. ¡Disfruta del amor hecho panela y siente cómo calienta tu corazón!",
+      name: 'Panela Redonda',
+      imagePath: 'assets/products/panelaredonda.jpg'),
+];
 
-  final double margen;
-  final Size size;
-  final String pathImage =
-      "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg";
+class ProductCard extends StatelessWidget {
+  final Product product;
+  final String description;
+
+  ProductCard({required this.product, required this.description});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        // margin: EdgeInsets.fromLTRB(0, margen, 0, 0),
-        // height: size.height * 0.4,
-        // color: Colors.red,
-        child: Image(
-          image: NetworkImage(pathImage),
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-}
-
-class _ElementoF3Triple extends StatelessWidget {
-  const _ElementoF3Triple({
-    Key? key,
-    required this.margen,
-    required this.size,
-  }) : super(key: key);
-
-  final double margen;
-  final Size size;
-  final String pathImage =
-      "https://www.soberana.com.co/wp-content/uploads/2021/01/DestacadoHome1-1.jpg";
-  final String descripcionProducto =
-      "Oferta pague 3 lleve 4 en especialidades atún la soberana";
-  final String precioProducto = "\$15";
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
+    return Card(
+      elevation: 4,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image(
-            image: NetworkImage(
-              pathImage,
+          Expanded(
+            child: Image.asset(
+              product.imagePath,
+              fit: BoxFit.fitHeight,
             ),
           ),
-          Column(
-            children: [
-              AutoSizeText(
-                descripcionProducto,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-              ),
-              AutoSizeText(
-                precioProducto,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: margen),
-              TextButton(
-                onPressed: () {},
-                child: Text("AÑADIR AL CARRITO"),
-              )
-            ],
+          Padding(
+            padding: EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product.name,
+                  style: GoogleFonts.courgette(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green[900],
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  description,
+                  style: GoogleFonts.cabin(
+                    fontSize: 14,
+                    color: Colors.green[800],
+                  ),
+                  maxLines: 6,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      onPressed: () async {
+                        const url = 'https://wa.me/593997968429';
+                        String dynamicProductQuery =
+                            "?text=Buen día SOBERANA. Quiero información y precio de: ${product.name}";
+                        String completeUrl = url + dynamicProductQuery;
+
+                        if (await canLaunchUrl(Uri.parse(completeUrl))) {
+                          await launchUrl(Uri.parse(completeUrl));
+                        } else {
+                          throw 'Could not launch $completeUrl';
+                        }
+                      },
+                      child: Text(
+                        'Comprar',
+                        style: TextStyle(fontSize: 17),
+                      ),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -364,48 +196,36 @@ class _ElementoF3Triple extends StatelessWidget {
   }
 }
 
-final List<Widget> imageSliders = imgList
-    .map((item) => Container(
-          child: Container(
-            margin: EdgeInsets.all(5.0),
-            child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                child: Stack(
-                  children: <Widget>[
-                    Image.network(
-                      item,
-                      fit: BoxFit.cover,
-                      // width: 1000.0,
-                    ),
-                    Positioned(
-                      bottom: 0.0,
-                      left: 0.0,
-                      right: 0.0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color.fromARGB(200, 0, 0, 0),
-                              Color.fromARGB(0, 0, 0, 0)
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
-                          ),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 20.0),
-                        child: Text(
-                          'No. ${imgList.indexOf(item)} image',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
+class ProductGrid extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        int crossAxisCount = 3;
+
+        if (sizingInformation.deviceScreenType == DeviceScreenType.mobile) {
+          crossAxisCount = 1;
+        } else if (sizingInformation.deviceScreenType ==
+            DeviceScreenType.tablet) {
+          crossAxisCount = 2;
+        }
+
+        return GridView.builder(
+          itemCount: productList.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            childAspectRatio: 0.8,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
           ),
-        ))
-    .toList();
+          itemBuilder: (BuildContext context, int index) {
+            return ProductCard(
+              product: productList[index],
+              description: productList[index].description,
+            );
+          },
+        );
+      },
+    );
+  }
+}

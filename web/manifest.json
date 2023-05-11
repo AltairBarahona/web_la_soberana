@@ -1,11 +1,11 @@
 {
-    "name": "La Soberana Altair B",
-    "short_name": "La Soberana Altair B",
+    "name": "Soberana Altair B",
+    "short_name": "Soberana Altair B",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Web de La Soberana",
+    "description": "Web de Soberana",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

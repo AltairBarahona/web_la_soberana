@@ -30,16 +30,16 @@ class _TabletDesktopMenu extends StatelessWidget {
       child: Row(
         children: [
           CustomFlatuButton(
-              text: "La Soberana",
+              text: "Soberana",
               color: Colors.red,
               onPressed: () {
                 locator<NavigationService>().navigateTo("/home");
               }),
-          CustomFlatuButton(
-            text: "Nuestra tienda",
-            color: Colors.black,
-            onPressed: () => locator<NavigationService>().navigateTo("/tienda"),
-          ),
+          // CustomFlatuButton(
+          //   text: "Nuestra tienda",
+          //   color: Colors.black,
+          //   onPressed: () => locator<NavigationService>().navigateTo("/tienda"),
+          // ),
           SizedBox(width: 10),
           CustomFlatuButton(
             text: "Contacto",
@@ -155,18 +155,10 @@ class __MenuTitleState extends State<_MenuTitle> {
           ),
           if (isOpen2 && size.width > 600) ...[
             CustomFlatuButton(
-              text: "La Soberana",
+              text: "Soberana",
               color: Colors.red,
               onPressed: () {
                 return locator<NavigationService>().navigateTo("/home");
-              },
-            ),
-            Divider(color: Colors.black, thickness: 0.1),
-            CustomFlatuButton(
-              text: "Nuestra tienda",
-              color: Colors.black,
-              onPressed: () {
-                return locator<NavigationService>().navigateTo("/tienda");
               },
             ),
             Divider(color: Colors.black, thickness: 0.1),
@@ -180,7 +172,7 @@ class __MenuTitleState extends State<_MenuTitle> {
           ],
           if (isOpen2 && size.width <= 600) ...[
             CustomFlatuButton(
-              text: "La Soberana",
+              text: "Soberana",
               color: Colors.red,
               onPressed: () {
                 if (isOpen2) {
@@ -192,22 +184,6 @@ class __MenuTitleState extends State<_MenuTitle> {
                   isOpen2 = !isOpen2;
                 });
                 return locator<NavigationService>().navigateTo("/home");
-              },
-            ),
-            Divider(color: Colors.black, thickness: 0.1),
-            CustomFlatuButton(
-              text: "Nuestra tienda",
-              color: Colors.black,
-              onPressed: () {
-                if (isOpen2) {
-                  widget.controller.reverse();
-                } else {
-                  widget.controller.forward();
-                }
-                setState(() {
-                  isOpen2 = !isOpen2;
-                });
-                return locator<NavigationService>().navigateTo("/tienda");
               },
             ),
             Divider(color: Colors.black, thickness: 0.1),
@@ -232,28 +208,3 @@ class __MenuTitleState extends State<_MenuTitle> {
     );
   }
 }
-
-/*
-Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomFlatuButton(
-            text: "La Soberana",
-            color: Colors.red,
-            onPressed: () => locator<NavigationService>().navigateTo("/home"),
-          ),
-          Divider(color: Colors.black, thickness: 0.1),
-          CustomFlatuButton(
-            text: "Nuestra tienda",
-            color: Colors.black,
-            onPressed: () => locator<NavigationService>().navigateTo("/tienda"),
-          ),
-          Divider(color: Colors.black, thickness: 0.1),
-          CustomFlatuButton(
-            text: "Contacto",
-            color: Colors.black,
-            onPressed: () =>
-                locator<NavigationService>().navigateTo("/contacto"),
-          ),
-        ],
-      ), */

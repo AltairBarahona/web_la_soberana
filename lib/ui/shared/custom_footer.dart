@@ -36,7 +36,7 @@ class FooterDesktop extends StatelessWidget {
             height: size.height * 0.45,
             width: double.infinity,
             child: Image.network(
-              "https://plustatic.com/4059/conversions/diferencias-mar-oceano-default.jpg",
+              "assets/img/arverjaRosada.jpeg",
               fit: BoxFit.fill,
             ),
           ),
@@ -58,7 +58,7 @@ class FooterDesktop extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TextoCentrado(texto: "CORPORATIVO"),
-                        TextoCentrado(texto: "LA SOBERANA"),
+                        TextoCentrado(texto: "Soberana"),
                         TextoCentrado(texto: "RECETAS"),
                         TextoCentrado(texto: "CONTACTO"),
                         TextoCentrado(texto: "TRABAJA CON NOSOTROS"),
@@ -143,7 +143,7 @@ class FooterMobile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       TextoCentrado(texto: "CORPORATIVO"),
-                      TextoCentrado(texto: "LA SOBERANA"),
+                      TextoCentrado(texto: "Soberana"),
                       TextoCentrado(texto: "RECETAS"),
                       TextoCentrado(texto: "CONTACTO"),
                       TextoCentrado(texto: "TRABAJA CON NOSOTROS"),

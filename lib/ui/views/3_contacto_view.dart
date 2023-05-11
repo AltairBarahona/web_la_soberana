@@ -1,69 +1,139 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:web_la_soberana/ui/shared/custom_footer.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class ContactoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            // color: Colors.red,
-            height: size.height * 0.35,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                  "https://img.freepik.com/foto-gratis/alimentos-enlatados-huevos-pasta-aislado-sobre-fondo-azul-copyscape_145193-1583.jpg?size=626&ext=jpg",
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        double titleSize = sizingInformation.isMobile ? 28 : 32;
+        double textSize = sizingInformation.isMobile ? 20 : 25;
+
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: size.width,
+                height: size.width > 600 ? size.width * 0.2 : 100,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/products/banner1.png"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                fit: BoxFit.cover,
               ),
-            ),
-            child: Stack(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      // color: Colors.red.withOpacity(0.2),
-                      width: size.width * 0.2,
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Contáctanos',
+                      style: GoogleFonts.courgette(
+                        fontSize: titleSize,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green[900],
+                      ),
                     ),
-                    Expanded(
-                      // height: ai
-                      child: FittedBox(
-                          child: Row(
-                        children: [
-                          AutoSizeText("¡CONTÁCTANOS!",
-                              style: GoogleFonts.satisfy(color: Colors.white)),
+                    SizedBox(height: 20),
+                    Text(
+                      'Si estás interesado en adquirir nuestros productos o necesitas más información, no dudes en comunicarte con nosotros.',
+                      style: GoogleFonts.cabin(
+                        fontSize: textSize,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+
+                    //Correo electrónico a soberana@gmail.com
+                    RichText(
+                      text: TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Ventas y atención al cliente: ',
+                            style: GoogleFonts.courgette(
+                              fontSize: textSize,
+                              color: Colors.green[900],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          TextSpan(
+                            text: '0997968429 | +593997968429',
+                            style: GoogleFonts.cabin(
+                              fontSize: textSize,
+                              color: Colors.black,
+                            ),
+                          ),
                         ],
-                      )),
+                      ),
                     ),
+                    SizedBox(height: 10),
+
+                    RichText(
+                      text: TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Correo electrónico: ',
+                            style: GoogleFonts.courgette(
+                              fontSize: textSize,
+                              color: Colors.green[900],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'soberana@gmail.com',
+                            style: GoogleFonts.cabin(
+                              fontSize: textSize,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    SizedBox(height: 20),
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: textSize,
+                          color: Colors.black,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Ubicación: ',
+                            style: GoogleFonts.courgette(
+                              fontSize: textSize,
+                              color: Colors.green[900],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Av. Las Hiedras y Granados.',
+                            style: GoogleFonts.cabin(
+                              fontSize: textSize,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    SizedBox(height: 40),
+                    Text(
+                      'En Soberana, nos dedicamos a traer a tu mesa los mejores productos nacionales e internacionales',
+                      style: TextStyle(fontSize: textSize),
+                    ),
+                    SizedBox(height: 20),
                   ],
-                ) // Row(),
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
-          SizedBox(height: size.height * 0.05),
-          Container(
-            height: size.height * 0.18,
-            width: size.width * 0.8,
-            // color: Colors.red,
-            child: AutoSizeText(
-              '''
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis aliquam quam vitae accumsan. Nulla dapibus ipsum in lectus feugiat pulvinar. Donec id felis porttitor, commodo libero et, efficitur orci. Curabitur pellentesque quam justo, tristique mattis arcu mollis at. Aliquam nec ornare mauris, sit amet venenatis neque. Etiam sit amet lorem justo. Sed non aliquet risus.
-
-
-               ''',
-              style: TextStyle(fontSize: 80),
-              textAlign: TextAlign.justify,
-              // style: TextStyle(fontSize: ),
-            ),
-          ),
-          Footer(),
-        ],
-      ),
+        );
+      },
     );
   }
 }

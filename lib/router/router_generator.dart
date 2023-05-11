@@ -13,12 +13,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/home':
         return _fadeRoute(HomeView(), "/home");
-      case '/tienda':
-        return _fadeRoute(TiendaView(), "/tienda");
-      // return MaterialPageRoute(
-      //   settings: RouteSettings(name: '/tienda'),
-      //   builder: (_) => CounterPage(),
-      // );
+      // case '/tienda':
+      //   return _fadeRoute(TiendaView(), "/tienda");
       case '/contacto':
         return _fadeRoute(ContactoView(), "/contacto");
 
